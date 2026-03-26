@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore My World</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="map-canvas" width="800" height="600"></canvas>
+        <div id="character"></div>
+        <div id="controls">
+            <label for="character-select">Choose Character:</label>
+            <select id="character-select">
+                <option value="🐱">Cat</option>
+                <option value="🐶">Dog</option>
+                <option value="🦄">Unicorn</option>
+                <option value="🚀">Rocket</option>
+            </select>
+        </div>
+    </div>
+    <div id="about" class="section hidden">
+        <h2>About</h2>
+        <p>Welcome to my world! This is a fun exploration game.</p>
+        <button class="close-btn">Close</button>
+    </div>
+    <div id="team" class="section hidden">
+        <h2>Team</h2>
+        <p>Meet the team behind this adventure.</p>
+        <button class="close-btn">Close</button>
+    </div>
+    <div id="gallery" class="section hidden">
+        <h2>Gallery</h2>
+        <p>Check out some cool images.</p>
+        <button class="close-btn">Close</button>
+    </div>
+    <div id="events" class="section hidden">
+        <h2>Events</h2>
+        <p>Upcoming events and activities.</p>
+        <button class="close-btn">Close</button>
+    </div>
+    <div id="merch" class="section hidden">
+        <h2>Merch</h2>
+        <p>Get your merch here!</p>
+        <button class="close-btn">Close</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
