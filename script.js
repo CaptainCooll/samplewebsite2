@@ -95,12 +95,12 @@ characterSelect.addEventListener('change', () => {
 // Mouse move
 canvas.addEventListener('mousemove', (e) => {
     const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const x = e.clientX;
+    const y = e.clientY;
 
     // Move character
-    character.style.left = (rect.left + x - 15) + 'px'; // Center emoji
-    character.style.top = (rect.top + y - 15) + 'px';
+    character.style.left = (x - 15) + 'px'; // Center emoji
+    character.style.top = (y - 15) + 'px';
 
     // Clear fog
     clearFog(x, y);
