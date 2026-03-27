@@ -7,6 +7,8 @@ const characterSelect = document.getElementById('character-select');
 function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    areas = getAreas();
+    revealedAreas.clear();
     drawMap();
     drawFog();
 }
@@ -14,14 +16,19 @@ resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
 // Define areas: {x, y, width, height, id}
-const areas = [
-    { x: 0, y: 0, width: 400, height: 300, id: 'about' },
-    { x: 400, y: 0, width: 400, height: 300, id: 'team' },
-    { x: 0, y: 300, width: 400, height: 300, id: 'gallery' },
-    { x: 400, y: 300, width: 400, height: 300, id: 'events' },
-    { x: 200, y: 150, width: 400, height: 300, id: 'merch' } // Overlapping center
-];
+function getAreas() {
+    const w = canvas.width;
+    const h = canvas.height;
+    return [
+        { x: 0, y: 0, width: w/2, height: h/2, id: 'about' },
+        { x: w/2, y: 0, width: w/2, height: h/2, id: 'team' },
+        { x: 0, y: h/2, width: w/2, height: h/2, id: 'gallery' },
+        { x: w/2, y: h/2, width: w/2, height: h/2, id: 'events' },
+        { x: w/4, y: h/4, width: w/2, height: h/2, id: 'merch' } // Overlapping center
+    ];
+}
 
+let areas = [];
 let revealedAreas = new Set();
 
 // Draw map
@@ -47,16 +54,17 @@ function drawMap() {
 }
 
 // Draw fog
-function clearFog() {
+function drawFog() {
     ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 // Clear fog around character
-function drawFog(x, y) {
+function clearFog(x, y) {
     const radius = 50;
     ctx.save();
     ctx.globalCompositeOperation = 'destination-out';
+    ctx.fillStyle = 'rgba(0, 0, 0, 1)';
     ctx.beginPath();
     ctx.arc(x, y, radius, 0, Math.PI * 2);
     ctx.fill();
@@ -120,6 +128,7 @@ canvas.addEventListener('mousemove', (e) => {
 });
 
 // Initialize
+areas = getAreas();
 drawMap();
 drawFog();
 character.textContent = characterSelect.value;
