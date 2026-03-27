@@ -37,13 +37,13 @@ function drawMap() {
 }
 
 // Draw fog
-function drawFog() {
+function clearFog() {
     ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 // Clear fog around character
-function clearFog(x, y) {
+function drawFog(x, y) {
     const radius = 50;
     ctx.save();
     ctx.globalCompositeOperation = 'destination-out';
